@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AirCompanySearchServiceImpl implements AirCompanySearchService {
-    @ProdCode
     @ThisCodeSmells(reviewer = "Max")
     private boolean isRangeMatched(double value, double rangeStart, double rangeEnd) {
         boolean isMatched = true;

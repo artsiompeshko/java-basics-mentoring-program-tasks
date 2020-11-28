@@ -1,5 +1,6 @@
 package com.apeshko.javacore.task_05;
 
+import com.apeshko.javacore.task_05.annotations.ProdCode;
 import com.apeshko.javacore.task_05.annotations.ThisCodeSmells;
 import com.apeshko.javacore.task_05.model.*;
 import com.apeshko.javacore.task_05.model.exception.NotEnoughDistanceException;
@@ -138,10 +139,12 @@ public class Application {
             )
     );
 
+    @ProdCode
     public static AirCompany getRandomAirCompany() {
         return airCompanies.get(new Random().nextInt(airCompanies.size()));
     }
 
+    @ProdCode
     public static void calculateCapacityTest() {
         final AirCompanyService airCompanyService = new AirCompanyServiceImpl();
         final AirCompany airCompany = getRandomAirCompany();
@@ -149,6 +152,7 @@ public class Application {
         System.out.println("Capacity of the company " + airCompany.getName() + " equals " + airCompanyService.getCapacity(airCompany));
     }
 
+    @ProdCode
     public static void calculateWeightTest() {
         final AirCompanyService airCompanyService = new AirCompanyServiceImpl();
         final AirCompany airCompany = getRandomAirCompany();
