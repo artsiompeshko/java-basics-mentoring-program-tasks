@@ -57,7 +57,7 @@ public class Application {
                 }
             }
 
-            for (Method method : clazz.getMethods()) {
+            for (Method method : clazz.getDeclaredMethods()) {
                 if (getAnnotation(method.getAnnotations(), "ThisCodeSmells") != null) {
                     System.out.println("Method " + method.getName() + " " + getReviewer(getAnnotation(method.getAnnotations(), "ThisCodeSmells")));
                 }

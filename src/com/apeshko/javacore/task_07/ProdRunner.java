@@ -23,7 +23,7 @@ public class ProdRunner {
         Iterable<Class> classes = new ClassesLoader().getClasses(classLoader, "com.apeshko.javacore.task_05");
 
         for (Class clazz : classes) {
-            for (Method method : clazz.getMethods()) {
+            for (Method method : clazz.getDeclaredMethods()) {
                 if (getAnnotation(method.getAnnotations(), "ProdCode") != null) {
                     try {
                         method.invoke(null);
