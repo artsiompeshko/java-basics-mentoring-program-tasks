@@ -1,18 +1,14 @@
 package com.apeshko.javacore.task_03.model;
 
 public class Quadcopter extends FlyingMachine {
-    public static enum Type {
-        MILITARY,
-        ENTERTAINMENT,
-    }
 
-    private Quadcopter.Type type;
+    private QuadcopterType type;
 
-    public Type getType() {
+    public QuadcopterType getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(QuadcopterType type) {
         this.type = type;
     }
 
@@ -55,7 +51,7 @@ public class Quadcopter extends FlyingMachine {
             return this;
         }
 
-        public Builder withType(Quadcopter.Type type) {
+        public Builder withType(QuadcopterType type) {
             quadcopter.setType(type);
 
             return this;

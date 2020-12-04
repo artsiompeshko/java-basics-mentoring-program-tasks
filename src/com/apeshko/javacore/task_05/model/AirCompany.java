@@ -9,7 +9,7 @@ public class AirCompany {
     @UseStackOnly
     private String name;
     @UseArrayList
-    List<FlyingMachine> flyingMachines;
+    private List<FlyingMachine> flyingMachines;
 
     public AirCompany(String name, List<FlyingMachine> flyingMachines) {
         this.name = name;

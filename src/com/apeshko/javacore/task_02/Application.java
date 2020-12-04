@@ -1,7 +1,7 @@
 package com.apeshko.javacore.task_02;
 
 public class Application {
-    public static void dynamicArrayTest() {
+    private static void dynamicArrayTest() {
         DynamicArray dynamicArray = new DynamicArray(2);
 
         System.out.println(dynamicArray);
@@ -27,7 +27,7 @@ public class Application {
         System.out.println(dynamicArray);
     }
 
-    public static void flexibleDynamicArrayTest() {
+    private static void flexibleDynamicArrayTest() {
         FlexibleDynamicArray<String> flexibleDynamicArray = new FlexibleDynamicArray<String>(String[].class, 2);
 
         System.out.println(flexibleDynamicArray);

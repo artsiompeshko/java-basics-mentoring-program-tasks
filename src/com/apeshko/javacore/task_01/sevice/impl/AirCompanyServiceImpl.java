@@ -16,8 +16,7 @@ public class AirCompanyServiceImpl implements AirCompanyService {
         }
 
         return airCompany
-                .getFlyingMachines()
-                .stream()
+                .getFlyingMachines().stream()
                 .reduce(0L, (partialCapacityResult, flyingMachine) -> partialCapacityResult + flyingMachine.getCapacity(), Long::sum);
     }
 
@@ -28,8 +27,7 @@ public class AirCompanyServiceImpl implements AirCompanyService {
         }
 
         return airCompany
-                .getFlyingMachines()
-                .stream()
+                .getFlyingMachines().stream()
                 .reduce(0.0, (partialCapacityResult, flyingMachine) -> partialCapacityResult + flyingMachine.getWeight(), Double::sum);
     }
 
@@ -40,8 +38,7 @@ public class AirCompanyServiceImpl implements AirCompanyService {
         }
 
         return airCompany
-                .getFlyingMachines()
-                .stream()
+                .getFlyingMachines().stream()
                 .sorted(Comparator.comparing(a -> a.getDistance()))
                 .collect(Collectors.toList());
     }

@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class Application {
-    public static Annotation getAnnotation(Annotation[] annotations, String annotationName) {
+    private static Annotation getAnnotation(Annotation[] annotations, String annotationName) {
         for (Annotation annotation : annotations) {
             if (annotation.annotationType().getName().contains(annotationName)) {
                 return annotation;
@@ -16,7 +16,7 @@ public class Application {
         return null;
     }
 
-    public static String getReviewer(Annotation annotation) {
+    private static String getReviewer(Annotation annotation) {
         try {
             if (annotation.annotationType().getName().contains("ThisCodeSmellsContainer")) {
                 String reviewers = "";

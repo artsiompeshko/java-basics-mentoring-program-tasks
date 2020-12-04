@@ -7,7 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class ProdRunner {
-    public static Annotation getAnnotation(Annotation[] annotations, String annotationName) {
+    private static Annotation getAnnotation(Annotation[] annotations, String annotationName) {
         for (Annotation annotation : annotations) {
             if (annotation.annotationType().getName().contains(annotationName)) {
                 return annotation;

@@ -1,18 +1,14 @@
 package com.apeshko.javacore.task_03.model;
 
 public class Airplane extends FlyingMachine {
-    public static enum Type {
-        BOEING,
-        AIRBUS,
-    }
 
-    private Airplane.Type type;
+    private AirplaneType type;
 
-    public Type getType() {
+    public AirplaneType getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(AirplaneType type) {
         this.type = type;
     }
 
@@ -33,9 +29,7 @@ public class Airplane extends FlyingMachine {
             airplane.setWeight(weight);
 
             return this;
-        }
-
-        ;
+        };
 
         public Builder withWidth(double width) {
             airplane.setWidth(width);
@@ -55,7 +49,7 @@ public class Airplane extends FlyingMachine {
             return this;
         }
 
-        public Builder withType(Airplane.Type type) {
+        public Builder withType(AirplaneType type) {
             airplane.setType(type);
 
             return this;

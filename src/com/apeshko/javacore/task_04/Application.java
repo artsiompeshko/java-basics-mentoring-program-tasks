@@ -17,7 +17,7 @@ import java.util.Random;
 public class Application {
     private static List<AirCompany> airCompanies;
 
-    public static void fillCompaniesData() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    private static void fillCompaniesData() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         airCompanies = Arrays.asList(
                 AirCompany.class.getConstructor(String.class, List.class).newInstance(
                         "WizzAir",
@@ -25,7 +25,7 @@ public class Application {
                                 Airplane.Builder.class.getConstructor().newInstance()
                                         .withName("Sea")
                                         .withCapacity(120)
-                                        .withType(Airplane.Type.AIRBUS)
+                                        .withType(AirplaneType.AIRBUS)
                                         .withHeight(1200)
                                         .withWidth(350)
                                         .withLength(24567.9)
@@ -35,7 +35,7 @@ public class Application {
                                 Airplane.Builder.class.getConstructor().newInstance()
                                         .withName("Sun")
                                         .withCapacity(140)
-                                        .withType(Airplane.Type.BOEING)
+                                        .withType(AirplaneType.BOEING)
                                         .withHeight(1000)
                                         .withWidth(300)
                                         .withLength(21567.9)
@@ -50,7 +50,7 @@ public class Application {
                                 Airplane.Builder.class.getConstructor().newInstance()
                                         .withName("Rain")
                                         .withCapacity(100)
-                                        .withType(Airplane.Type.AIRBUS)
+                                        .withType(AirplaneType.AIRBUS)
                                         .withHeight(1000)
                                         .withWidth(310)
                                         .withLength(23567.9)
@@ -60,7 +60,7 @@ public class Application {
                                 Airplane.Builder.class.getConstructor().newInstance()
                                         .withName("Sun")
                                         .withCapacity(170)
-                                        .withType(Airplane.Type.BOEING)
+                                        .withType(AirplaneType.BOEING)
                                         .withHeight(2200)
                                         .withWidth(700)
                                         .withLength(31567.9)
@@ -75,7 +75,7 @@ public class Application {
                                 Helicopter.Builder.class.getConstructor().newInstance()
                                         .withName("Doctor Who")
                                         .withCapacity(2)
-                                        .withType(Helicopter.Type.HEALTH)
+                                        .withType(HelicopterType.HEALTH)
                                         .withHeight(2000)
                                         .withWidth(300)
                                         .withLength(3567.9)
@@ -85,7 +85,7 @@ public class Application {
                                 Helicopter.Builder.class.getConstructor().newInstance()
                                         .withName("Friend")
                                         .withCapacity(4)
-                                        .withType(Helicopter.Type.HEALTH)
+                                        .withType(HelicopterType.HEALTH)
                                         .withHeight(2200)
                                         .withWidth(400)
                                         .withLength(2567.9)
@@ -100,7 +100,7 @@ public class Application {
                                 Helicopter.Builder.class.getConstructor().newInstance()
                                         .withName("Warrior")
                                         .withCapacity(10)
-                                        .withType(Helicopter.Type.MILITARY)
+                                        .withType(HelicopterType.MILITARY)
                                         .withHeight(3000)
                                         .withWidth(500)
                                         .withLength(4567.9)
@@ -110,7 +110,7 @@ public class Application {
                                 Helicopter.Builder.class.getConstructor().newInstance()
                                         .withName("Axe")
                                         .withCapacity(6)
-                                        .withType(Helicopter.Type.MILITARY)
+                                        .withType(HelicopterType.MILITARY)
                                         .withHeight(3200)
                                         .withWidth(600)
                                         .withLength(3567.9)
@@ -120,7 +120,7 @@ public class Application {
                                 Helicopter.Builder.class.getConstructor().newInstance()
                                         .withName("Helper")
                                         .withCapacity(8)
-                                        .withType(Helicopter.Type.MILITARY)
+                                        .withType(HelicopterType.MILITARY)
                                         .withHeight(3200)
                                         .withWidth(600)
                                         .withLength(3567.9)
@@ -130,7 +130,7 @@ public class Application {
                                 Quadcopter.Builder.class.getConstructor().newInstance()
                                         .withName("Mass Attack")
                                         .withCapacity(0)
-                                        .withType(Quadcopter.Type.MILITARY)
+                                        .withType(QuadcopterType.MILITARY)
                                         .withHeight(100)
                                         .withWidth(100)
                                         .withLength(100.9)
@@ -142,11 +142,11 @@ public class Application {
         );
     }
 
-    public static AirCompany getRandomAirCompany() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    private static AirCompany getRandomAirCompany() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         return airCompanies.get(Random.class.getConstructor().newInstance().nextInt(airCompanies.size()));
     }
 
-    public static void calculateCapacityTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    private static void calculateCapacityTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         final AirCompanyService airCompanyService = AirCompanyServiceImpl.class.getConstructor().newInstance();
         final AirCompany airCompany = getRandomAirCompany();
 
@@ -156,7 +156,7 @@ public class Application {
         System.out.println("Capacity of the company " + getNameMethod.invoke(airCompany) + " equals " + getCapacityMethod.invoke(airCompanyService, airCompany));
     }
 
-    public static void calculateWeightTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    private static void calculateWeightTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         final AirCompanyService airCompanyService = AirCompanyServiceImpl.class.getConstructor().newInstance();
         final AirCompany airCompany = getRandomAirCompany();
 
@@ -166,7 +166,7 @@ public class Application {
         System.out.println("Carrying of the company " + getNameMethod.invoke(airCompany) + " equals " + getWeightMethod.invoke(airCompanyService, airCompany));
     }
 
-    public static void sortByDistanceTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    private static void sortByDistanceTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         final AirCompanyService airCompanyService = AirCompanyServiceImpl.class.getConstructor().newInstance();
         final AirCompany airCompany = getRandomAirCompany();
 
@@ -178,13 +178,12 @@ public class Application {
         System.out.println("Flying machines of the company " + getNameMethod.invoke(airCompany) + " sorted by distance:");
 
         flyingMachines
-                .stream()
                 .forEach(flyingMachine -> {
                     System.out.println(" - " + flyingMachine.getName() + " " + flyingMachine.getDistance());
                 });
     }
 
-    public static void searchByCriteriaTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    private static void searchByCriteriaTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         final AirCompanySearchService airCompanySearchService = AirCompanySearchServiceImpl.class.getConstructor().newInstance();
         final AirCompany airCompany = getRandomAirCompany();
         final FlyingMachineSearchCriteria flyingMachineSearchCriteria = FlyingMachineSearchCriteria.Builder.class.getConstructor().newInstance()
@@ -201,7 +200,6 @@ public class Application {
 
         System.out.println("Flying machines of the company " + getNameMethod.invoke(airCompany) + " with capacity in a range [" + flyingMachineSearchCriteria.getCapacityStart() + ", " + flyingMachineSearchCriteria.getCapacityEnd() + "]:");
         flyingMachines
-                .stream()
                 .forEach(flyingMachine -> {
                     try {
                         System.out.println(" - " + getFlyingMachineNameMethod.invoke(flyingMachine) + " " + getFlyingMachineCapacityMethod.invoke(flyingMachine));
@@ -213,7 +211,7 @@ public class Application {
                 });
     }
 
-    static void makeFlightSuccessTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    private static void makeFlightSuccessTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         final FlightServiceImpl flightService = FlightServiceImpl.class.getConstructor().newInstance();
 
         final Airport airportFrom = Airport.class.getConstructor(String.class, long.class, long.class).newInstance("Minsk", 1, 1);
@@ -221,7 +219,7 @@ public class Application {
         final FlyingMachine airplane = Airplane.Builder.class.getConstructor().newInstance()
                 .withName("Sea")
                 .withCapacity(120)
-                .withType(Airplane.Type.AIRBUS)
+                .withType(AirplaneType.AIRBUS)
                 .withHeight(1200)
                 .withWidth(350)
                 .withLength(24567.9)
@@ -238,7 +236,7 @@ public class Application {
         }
     }
 
-    static void makeFlightExceptionTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    private static void makeFlightExceptionTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         final FlightServiceImpl flightService = FlightServiceImpl.class.getConstructor().newInstance();
 
         final Airport airportFrom = Airport.class.getConstructor(String.class, long.class, long.class).newInstance("Minsk", 1, 1);
@@ -246,7 +244,7 @@ public class Application {
         final FlyingMachine airplane = Quadcopter.Builder.class.getConstructor().newInstance()
                 .withName("Mass Attack")
                 .withCapacity(0)
-                .withType(Quadcopter.Type.MILITARY)
+                .withType(QuadcopterType.MILITARY)
                 .withHeight(100)
                 .withWidth(100)
                 .withLength(100.9)

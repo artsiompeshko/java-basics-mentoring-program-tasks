@@ -23,7 +23,7 @@ public class Application {
                     new Airplane.Builder()
                             .withName("Sea")
                             .withCapacity(120)
-                            .withType(Airplane.Type.AIRBUS)
+                            .withType(AirplaneType.AIRBUS)
                             .withHeight(1200)
                             .withWidth(350)
                             .withLength(24567.9)
@@ -33,7 +33,7 @@ public class Application {
                     new Airplane.Builder()
                             .withName("Sun")
                             .withCapacity(140)
-                            .withType(Airplane.Type.BOEING)
+                            .withType(AirplaneType.BOEING)
                             .withHeight(1000)
                             .withWidth(300)
                             .withLength(21567.9)
@@ -48,7 +48,7 @@ public class Application {
                     new Airplane.Builder()
                             .withName("Rain")
                             .withCapacity(100)
-                            .withType(Airplane.Type.AIRBUS)
+                            .withType(AirplaneType.AIRBUS)
                             .withHeight(1000)
                             .withWidth(310)
                             .withLength(23567.9)
@@ -58,7 +58,7 @@ public class Application {
                     new Airplane.Builder()
                             .withName("Sun")
                             .withCapacity(170)
-                            .withType(Airplane.Type.BOEING)
+                            .withType(AirplaneType.BOEING)
                             .withHeight(2200)
                             .withWidth(700)
                             .withLength(31567.9)
@@ -73,7 +73,7 @@ public class Application {
                     new Helicopter.Builder()
                             .withName("Doctor Who")
                             .withCapacity(2)
-                            .withType(Helicopter.Type.HEALTH)
+                            .withType(HelicopterType.HEALTH)
                             .withHeight(2000)
                             .withWidth(300)
                             .withLength(3567.9)
@@ -83,7 +83,7 @@ public class Application {
                     new Helicopter.Builder()
                             .withName("Friend")
                             .withCapacity(4)
-                            .withType(Helicopter.Type.HEALTH)
+                            .withType(HelicopterType.HEALTH)
                             .withHeight(2200)
                             .withWidth(400)
                             .withLength(2567.9)
@@ -98,7 +98,7 @@ public class Application {
                     new Helicopter.Builder()
                             .withName("Warrior")
                             .withCapacity(10)
-                            .withType(Helicopter.Type.MILITARY)
+                            .withType(HelicopterType.MILITARY)
                             .withHeight(3000)
                             .withWidth(500)
                             .withLength(4567.9)
@@ -108,7 +108,7 @@ public class Application {
                     new Helicopter.Builder()
                             .withName("Axe")
                             .withCapacity(6)
-                            .withType(Helicopter.Type.MILITARY)
+                            .withType(HelicopterType.MILITARY)
                             .withHeight(3200)
                             .withWidth(600)
                             .withLength(3567.9)
@@ -118,7 +118,7 @@ public class Application {
                     new Helicopter.Builder()
                             .withName("Helper")
                             .withCapacity(8)
-                            .withType(Helicopter.Type.MILITARY)
+                            .withType(HelicopterType.MILITARY)
                             .withHeight(3200)
                             .withWidth(600)
                             .withLength(3567.9)
@@ -128,7 +128,7 @@ public class Application {
                     new Quadcopter.Builder()
                             .withName("Mass Attack")
                             .withCapacity(0)
-                            .withType(Quadcopter.Type.MILITARY)
+                            .withType(QuadcopterType.MILITARY)
                             .withHeight(100)
                             .withWidth(100)
                             .withLength(100.9)
@@ -140,12 +140,12 @@ public class Application {
     );
 
     @ProdCode
-    public static AirCompany getRandomAirCompany() {
+    private static AirCompany getRandomAirCompany() {
         return airCompanies.get(new Random().nextInt(airCompanies.size()));
     }
 
     @ProdCode
-    public static void calculateCapacityTest() {
+    private static void calculateCapacityTest() {
         final AirCompanyService airCompanyService = new AirCompanyServiceImpl();
         final AirCompany airCompany = getRandomAirCompany();
 
@@ -153,14 +153,14 @@ public class Application {
     }
 
     @ProdCode
-    public static void calculateWeightTest() {
+    private static void calculateWeightTest() {
         final AirCompanyService airCompanyService = new AirCompanyServiceImpl();
         final AirCompany airCompany = getRandomAirCompany();
 
         System.out.println("Carrying of the company " + airCompany.getName() + " equals " + airCompanyService.getWeight(airCompany));
     }
 
-    public static void sortByDistanceTest() {
+    private static void sortByDistanceTest() {
         final AirCompanyService airCompanyService = new AirCompanyServiceImpl();
         final AirCompany airCompany = getRandomAirCompany();
 
@@ -168,14 +168,13 @@ public class Application {
 
         System.out.println("Flying machines of the company " + airCompany.getName() + " sorted by distance:");
 
-        flyingMachines
-                .stream()
+        flyingMachines.stream()
                 .forEach(flyingMachine -> {
                     System.out.println(" - " + flyingMachine.getName() + " " + flyingMachine.getDistance());
                 });
     }
 
-    public static void searchByCriteriaTest() {
+    private static void searchByCriteriaTest() {
         final AirCompanySearchService airCompanySearchService = new AirCompanySearchServiceImpl();
         final AirCompany airCompany = getRandomAirCompany();
         final FlyingMachineSearchCriteria flyingMachineSearchCriteria = new FlyingMachineSearchCriteria.Builder()
@@ -187,13 +186,12 @@ public class Application {
 
         System.out.println("Flying machines of the company " + airCompany.getName() + " with capacity in a range [" + flyingMachineSearchCriteria.getCapacityStart() + ", " + flyingMachineSearchCriteria.getCapacityEnd() + "]:");
         flyingMachines
-                .stream()
                 .forEach(flyingMachine -> {
                     System.out.println(" - " + flyingMachine.getName() + " " + flyingMachine.getCapacity());
                 });
     }
 
-    static void makeFlightSuccessTest() {
+    private static void makeFlightSuccessTest() {
         final FlightServiceImpl flightService = new FlightServiceImpl();
 
         final Airport airportFrom = new Airport("Minsk", 1, 1);
@@ -201,7 +199,7 @@ public class Application {
         final FlyingMachine airplane = new Airplane.Builder()
                 .withName("Sea")
                 .withCapacity(120)
-                .withType(Airplane.Type.AIRBUS)
+                .withType(AirplaneType.AIRBUS)
                 .withHeight(1200)
                 .withWidth(350)
                 .withLength(24567.9)
@@ -216,7 +214,7 @@ public class Application {
         }
     }
 
-    static void makeFlightExceptionTest() {
+    private static void makeFlightExceptionTest() {
         final FlightServiceImpl flightService = new FlightServiceImpl();
 
         final Airport airportFrom = new Airport("Minsk", 1, 1);
@@ -224,7 +222,7 @@ public class Application {
         final FlyingMachine airplane = new Quadcopter.Builder()
                 .withName("Mass Attack")
                 .withCapacity(0)
-                .withType(Quadcopter.Type.MILITARY)
+                .withType(QuadcopterType.MILITARY)
                 .withHeight(100)
                 .withWidth(100)
                 .withLength(100.9)

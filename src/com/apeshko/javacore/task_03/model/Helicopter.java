@@ -1,19 +1,14 @@
 package com.apeshko.javacore.task_03.model;
 
 public class Helicopter extends FlyingMachine {
-    public static enum Type {
-        MILITARY,
-        ENTERTAINMENT,
-        HEALTH,
-    }
 
-    private Helicopter.Type type;
+    private HelicopterType type;
 
-    public Type getType() {
+    public HelicopterType getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(HelicopterType type) {
         this.type = type;
     }
 
@@ -56,7 +51,7 @@ public class Helicopter extends FlyingMachine {
             return this;
         }
 
-        public Builder withType(Helicopter.Type type) {
+        public Builder withType(HelicopterType type) {
             helicopter.setType(type);
 
             return this;

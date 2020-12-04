@@ -39,8 +39,7 @@ public class AirCompanySearchServiceImpl implements AirCompanySearchService {
         }
 
         return airCompany
-                .getFlyingMachines()
-                .stream()
+                .getFlyingMachines().stream()
                 .filter(flyingMachine -> {
                     boolean isWeightMatched = isRangeMatched(
                             flyingMachine.getWeight(),
